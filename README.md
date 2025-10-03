@@ -9,6 +9,21 @@ Smart AI agent that automatically uses Calculator and Wikipedia tools based on y
 - **Email Summaries**: Send conversation history via email
 - **Dual Interface**: Console and Web UI
 
+## 🏗️ Architecture
+
+![AI Chat Agent Architecture](./diagram-final.svg)
+
+The system uses a modular, layered architecture:
+
+- **User Layer**: Console and Web browser interfaces
+- **Interface Layer**: Flask web UI and terminal-based console  
+- **Application Core**: Main orchestration, configuration management, and AI agent logic
+- **Tool Layer**: Intelligent routing to Calculator and Wikipedia tools
+- **Storage Layer**: Persistent chat history with local database
+- **External Services**: Integration with OpenAI API, Wikipedia API, and Gmail SMTP
+
+The AI Agent analyzes each query using OpenAI's LLM to determine which tools to invoke, orchestrates the tool execution, and generates contextually appropriate responses.
+
 ## Quick Start
 
 ### 1. Install
