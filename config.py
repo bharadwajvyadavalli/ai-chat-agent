@@ -12,3 +12,6 @@ GMAIL_PASSWORD = os.getenv('GMAIL_PASSWORD')
 MODEL = 'gpt-4'
 TEMPERATURE = 0.7
 STORAGE_DIR = 'storage_data'
+
+MCP_ENABLED = True
+MCP_SERVERS = ["stdio://python3 mcp_server.py"]

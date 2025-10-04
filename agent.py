@@ -1,16 +1,16 @@
 import json
+import asyncio
 from openai import OpenAI
 import config
-from tools import Calculator, Wikipedia
 from storage import Storage
 
 client = OpenAI(api_key=config.OPENAI_API_KEY)
 
-SYSTEM_PROMPT = """You are an AI assistant with access to Calculator and Wikipedia tools.
+SYSTEM_PROMPT = """You are an AI assistant with access to MCP tools.
 
 Analyze each message and decide which tools to use:
-- Calculator: for math, calculations, equations
-- Wikipedia: for facts, information, people, places
+- calculator: for math, calculations, equations
+- wikipedia: for facts, information, people, places
 - Both: when you need both calculation and information
 - None: for greetings and general chat
 
@@ -20,11 +20,20 @@ Return JSON: {"tools": ["calculator"|"wikipedia"|"none"], "reasoning": "why"}"""
 class Agent:
     def __init__(self):
         self.storage = Storage()
-        self.calculator = Calculator()
-        self.wikipedia = Wikipedia()
+        
+        # MCP integration (required)
+        try:
+            from mcp_integration import MCPIntegration
+            self.mcp_integration = MCPIntegration()
+        except ImportError:
+            raise ImportError("MCP integration is required but not available. Please ensure mcp_integration.py exists.")
     
     def process(self, user_message):
         """Process user message and return response"""
+        # Initialize MCP integration
+        if not self.mcp_integration.mcp_enabled:
+            asyncio.run(self.mcp_integration.initialize())
+        
         # Get conversation history
         history = self.storage.get_last_messages(6)
         
@@ -32,13 +41,13 @@ class Agent:
         tool_decision = self._decide_tools(user_message, history)
         tools_to_use = tool_decision.get('tools', ['none'])
         
-        # Execute tools
+        # Execute tools via MCP
         tool_results = {}
         for tool in tools_to_use:
-            if tool == 'calculator':
-                tool_results['calculator'] = self.calculator.execute(user_message)
-            elif tool == 'wikipedia':
-                tool_results['wikipedia'] = self.wikipedia.execute(user_message)
+            if tool != 'none':
+                mcp_result = asyncio.run(self.mcp_integration.execute_tool(tool, user_message))
+                if mcp_result:
+                    tool_results[tool] = mcp_result
         
         # Generate response
         response = self._generate_response(user_message, tool_results, history)
