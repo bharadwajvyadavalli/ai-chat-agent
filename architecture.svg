@@ -1,0 +1,219 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <!-- Define styles -->
+  <defs>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #1a1a1a; }
+      .subtitle { font: 16px sans-serif; fill: #4a4a4a; }
+      .box-title { font: bold 14px sans-serif; fill: #ffffff; }
+      .box-text { font: 12px sans-serif; fill: #333333; }
+      .label { font: 11px sans-serif; fill: #666666; }
+      .component-box { fill: #3b82f6; stroke: #2563eb; stroke-width: 2; }
+      .tool-box { fill: #10b981; stroke: #059669; stroke-width: 2; }
+      .storage-box { fill: #f59e0b; stroke: #d97706; stroke-width: 2; }
+      .interface-box { fill: #8b5cf6; stroke: #7c3aed; stroke-width: 2; }
+      .mcp-box { fill: #ec4899; stroke: #db2777; stroke-width: 2; }
+      .arrow { stroke: #4b5563; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .bidirectional { stroke-dasharray: 5,5; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#4b5563" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="35" text-anchor="middle" class="title">AI Chat Agent Architecture</text>
+  <text x="600" y="58" text-anchor="middle" class="subtitle">with MCP Server &amp; Client Integration</text>
+
+  <!-- User Interface Layer -->
+  <g id="interface-layer">
+    <rect x="50" y="90" width="200" height="100" rx="8" class="interface-box"/>
+    <text x="150" y="115" text-anchor="middle" class="box-title">User Interfaces</text>
+    <text x="150" y="138" text-anchor="middle" class="box-text">Console Mode</text>
+    <text x="150" y="158" text-anchor="middle" class="box-text">Web UI (Flask)</text>
+    <text x="150" y="178" text-anchor="middle" class="box-text">Port: 5000</text>
+  </g>
+
+  <!-- Main Agent Core -->
+  <g id="agent-core">
+    <rect x="400" y="90" width="400" height="120" rx="8" class="component-box"/>
+    <text x="600" y="115" text-anchor="middle" class="box-title">AI Agent Core (agent.py)</text>
+    <text x="600" y="138" text-anchor="middle" class="box-text">• Smart Tool Routing &amp; Selection</text>
+    <text x="600" y="158" text-anchor="middle" class="box-text">• LLM Integration (OpenAI GPT-4)</text>
+    <text x="600" y="178" text-anchor="middle" class="box-text">• Context Management</text>
+    <text x="600" y="198" text-anchor="middle" class="box-text">• Response Generation</text>
+  </g>
+
+  <!-- MCP Client Layer -->
+  <g id="mcp-client">
+    <rect x="950" y="90" width="200" height="100" rx="8" class="mcp-box"/>
+    <text x="1050" y="115" text-anchor="middle" class="box-title">MCP Client</text>
+    <text x="1050" y="138" text-anchor="middle" class="box-text">Protocol Handler</text>
+    <text x="1050" y="158" text-anchor="middle" class="box-text">Server Discovery</text>
+    <text x="1050" y="178" text-anchor="middle" class="box-text">Tool Registration</text>
+  </g>
+
+  <!-- Tools Layer -->
+  <g id="tools">
+    <rect x="150" y="280" width="180" height="100" rx="8" class="tool-box"/>
+    <text x="240" y="305" text-anchor="middle" class="box-title">Built-in Tools</text>
+    <text x="240" y="328" text-anchor="middle" class="box-text">Calculator</text>
+    <text x="240" y="348" text-anchor="middle" class="box-text">Wikipedia API</text>
+    <text x="240" y="368" text-anchor="middle" class="box-text">(tools.py)</text>
+  </g>
+
+  <!-- MCP Server Layer -->
+  <g id="mcp-servers">
+    <rect x="420" y="280" width="360" height="100" rx="8" class="mcp-box"/>
+    <text x="600" y="305" text-anchor="middle" class="box-title">MCP Servers (Extensible)</text>
+    <text x="600" y="328" text-anchor="middle" class="box-text">• File System Server • Database Server</text>
+    <text x="600" y="348" text-anchor="middle" class="box-text">• API Connectors • Web Search</text>
+    <text x="600" y="368" text-anchor="middle" class="box-text">• Custom Business Logic Servers</text>
+  </g>
+
+  <!-- External Services -->
+  <g id="external-services">
+    <rect x="870" y="280" width="180" height="100" rx="8" class="tool-box"/>
+    <text x="960" y="305" text-anchor="middle" class="box-title">External Services</text>
+    <text x="960" y="328" text-anchor="middle" class="box-text">Email (Gmail)</text>
+    <text x="960" y="348" text-anchor="middle" class="box-text">SMTP Integration</text>
+    <text x="960" y="368" text-anchor="middle" class="box-text">Conversation Summary</text>
+  </g>
+
+  <!-- Storage Layer -->
+  <g id="storage">
+    <rect x="150" y="450" width="180" height="100" rx="8" class="storage-box"/>
+    <text x="240" y="475" text-anchor="middle" class="box-title">Local Storage</text>
+    <text x="240" y="498" text-anchor="middle" class="box-text">SQLite Database</text>
+    <text x="240" y="518" text-anchor="middle" class="box-text">Message History</text>
+    <text x="240" y="538" text-anchor="middle" class="box-text">(storage.py)</text>
+  </g>
+
+  <!-- Configuration -->
+  <g id="config">
+    <rect x="420" y="450" width="180" height="100" rx="8" class="storage-box"/>
+    <text x="510" y="475" text-anchor="middle" class="box-title">Configuration</text>
+    <text x="510" y="498" text-anchor="middle" class="box-text">.env File</text>
+    <text x="510" y="518" text-anchor="middle" class="box-text">API Keys</text>
+    <text x="510" y="538" text-anchor="middle" class="box-text">(config.py)</text>
+  </g>
+
+  <!-- MCP Protocol Box -->
+  <g id="mcp-protocol">
+    <rect x="690" y="450" width="360" height="100" rx="8" class="mcp-box"/>
+    <text x="870" y="475" text-anchor="middle" class="box-title">MCP Protocol Layer</text>
+    <text x="870" y="498" text-anchor="middle" class="box-text">Standardized Communication</text>
+    <text x="870" y="518" text-anchor="middle" class="box-text">Tool Discovery &amp; Invocation</text>
+    <text x="870" y="538" text-anchor="middle" class="box-text">JSON-RPC Based Messages</text>
+  </g>
+
+  <!-- Data Flow Section -->
+  <g id="data-flow">
+    <rect x="50" y="620" width="1100" height="240" rx="8" fill="#f3f4f6" stroke="#d1d5db" stroke-width="2"/>
+    <text x="600" y="650" text-anchor="middle" class="box-title" fill="#1f2937">System Data Flow</text>
+    
+    <!-- Flow Steps -->
+    <g id="step1">
+      <circle cx="120" cy="710" r="30" fill="#3b82f6" stroke="#2563eb" stroke-width="2"/>
+      <text x="120" y="718" text-anchor="middle" class="box-title">1</text>
+      <text x="120" y="760" text-anchor="middle" class="label">User sends query</text>
+      <text x="120" y="775" text-anchor="middle" class="label">via UI</text>
+    </g>
+
+    <g id="step2">
+      <circle cx="280" cy="710" r="30" fill="#3b82f6" stroke="#2563eb" stroke-width="2"/>
+      <text x="280" y="718" text-anchor="middle" class="box-title">2</text>
+      <text x="280" y="760" text-anchor="middle" class="label">Agent analyzes</text>
+      <text x="280" y="775" text-anchor="middle" class="label">query &amp; routes</text>
+    </g>
+
+    <g id="step3">
+      <circle cx="440" cy="710" r="30" fill="#ec4899" stroke="#db2777" stroke-width="2"/>
+      <text x="440" y="718" text-anchor="middle" class="box-title">3</text>
+      <text x="440" y="760" text-anchor="middle" class="label">MCP Client</text>
+      <text x="440" y="775" text-anchor="middle" class="label">discovers tools</text>
+    </g>
+
+    <g id="step4">
+      <circle cx="600" cy="710" r="30" fill="#10b981" stroke="#059669" stroke-width="2"/>
+      <text x="600" y="718" text-anchor="middle" class="box-title">4</text>
+      <text x="600" y="760" text-anchor="middle" class="label">Execute tools</text>
+      <text x="600" y="775" text-anchor="middle" class="label">(MCP/Built-in)</text>
+    </g>
+
+    <g id="step5">
+      <circle cx="760" cy="710" r="30" fill="#3b82f6" stroke="#2563eb" stroke-width="2"/>
+      <text x="760" y="718" text-anchor="middle" class="box-title">5</text>
+      <text x="760" y="760" text-anchor="middle" class="label">Agent generates</text>
+      <text x="760" y="775" text-anchor="middle" class="label">response</text>
+    </g>
+
+    <g id="step6">
+      <circle cx="920" cy="710" r="30" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+      <text x="920" y="718" text-anchor="middle" class="box-title">6</text>
+      <text x="920" y="760" text-anchor="middle" class="label">Save to</text>
+      <text x="920" y="775" text-anchor="middle" class="label">storage</text>
+    </g>
+
+    <g id="step7">
+      <circle cx="1080" cy="710" r="30" fill="#8b5cf6" stroke="#7c3aed" stroke-width="2"/>
+      <text x="1080" y="718" text-anchor="middle" class="box-title">7</text>
+      <text x="1080" y="760" text-anchor="middle" class="label">Display to</text>
+      <text x="1080" y="775" text-anchor="middle" class="label">user</text>
+    </g>
+
+    <!-- Flow arrows -->
+    <path d="M 150 710 L 250 710" class="arrow"/>
+    <path d="M 310 710 L 410 710" class="arrow"/>
+    <path d="M 470 710 L 570 710" class="arrow"/>
+    <path d="M 630 710 L 730 710" class="arrow"/>
+    <path d="M 790 710 L 890 710" class="arrow"/>
+    <path d="M 950 710 L 1050 710" class="arrow"/>
+
+    <!-- Additional info -->
+    <text x="600" y="820" text-anchor="middle" class="label" fill="#6b7280">MCP enables seamless integration of new tools without code changes</text>
+    <text x="600" y="840" text-anchor="middle" class="label" fill="#6b7280">All conversations persist locally • Email summaries available on demand</text>
+  </g>
+
+  <!-- Connection Arrows -->
+  <!-- UI to Agent -->
+  <path d="M 250 140 L 400 140" class="arrow"/>
+  
+  <!-- Agent to MCP Client -->
+  <path d="M 800 150 L 950 140" class="arrow"/>
+  
+  <!-- Agent to Tools -->
+  <path d="M 500 210 L 300 280" class="arrow"/>
+  
+  <!-- Agent to MCP Servers -->
+  <path d="M 600 210 L 600 280" class="arrow"/>
+  
+  <!-- MCP Client to MCP Servers -->
+  <path d="M 950 190 L 780 280" class="arrow"/>
+  
+  <!-- Agent to External Services -->
+  <path d="M 700 210 L 900 280" class="arrow"/>
+  
+  <!-- Agent to Storage (bidirectional) -->
+  <path d="M 450 210 L 280 450" class="arrow bidirectional"/>
+  
+  <!-- Agent to Config -->
+  <path d="M 550 210 L 510 450" class="arrow"/>
+  
+  <!-- MCP Servers to MCP Protocol -->
+  <path d="M 600 380 L 870 450" class="arrow bidirectional"/>
+
+  <!-- Legend -->
+  <g id="legend">
+    <text x="50" y="890" class="label" font-weight="bold">Legend:</text>
+    <rect x="120" y="878" width="15" height="15" class="component-box"/>
+    <text x="140" y="890" class="label">Core Components</text>
+    <rect x="260" y="878" width="15" height="15" class="tool-box"/>
+    <text x="280" y="890" class="label">Tools/Services</text>
+    <rect x="400" y="878" width="15" height="15" class="storage-box"/>
+    <text x="420" y="890" class="label">Storage/Config</text>
+    <rect x="540" y="878" width="15" height="15" class="interface-box"/>
+    <text x="560" y="890" class="label">User Interface</text>
+    <rect x="680" y="878" width="15" height="15" class="mcp-box"/>
+    <text x="700" y="890" class="label">MCP Integration</text>
+  </g>
+</svg>
