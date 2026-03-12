@@ -1,10 +1,15 @@
-
+# Core dependencies
 openai>=1.0.0
-wikipedia-api
-python-dotenv
-flask
-# MCP dependencies
-mcp
-pydantic>=2.0.0
-httpx
-anyio
+pyyaml>=6.0
+numpy>=1.24.0
+
+# Optional: for enhanced vector search
+# chromadb>=0.4.0
+# pinecone-client>=2.0.0
+
+# Development
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+black>=23.0.0
+ruff>=0.1.0
+mypy>=1.0.0
