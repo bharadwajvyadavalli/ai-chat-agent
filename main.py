@@ -1,10 +1,11 @@
 """
 Multi-Agent Orchestration Framework
 
-Entry point for running examples and testing the framework.
+Entry point for running examples, web server, and testing the framework.
 """
 
 import asyncio
+import os
 import sys
 
 from orchestrator import Message, MessageRole
@@ -124,23 +125,46 @@ async def demo_patterns():
     print("Demo complete!")
 
 
+def run_web_server():
+    """Start the Flask web server."""
+    from web.app import create_app
+
+    app = create_app()
+    host = os.getenv("FLASK_HOST", "127.0.0.1")
+    port = int(os.getenv("FLASK_PORT", "5000"))
+    debug = os.getenv("FLASK_DEBUG", "0") == "1"
+
+    print(f"Starting web server at http://{host}:{port}")
+    print("Press Ctrl+C to stop")
+    app.run(host=host, port=port, debug=debug)
+
+
 def main():
     """Main entry point."""
     if len(sys.argv) < 2:
-        print("Multi-Agent Orchestration Framework")
+        print("Multi-Agent Orchestration Framework v2.0")
         print()
         print("Usage: python main.py <command>")
         print()
         print("Commands:")
+        print("  web         Start the web chat interface")
         print("  pr-review   Run the PR review demo")
         print("  research    Run the research demo")
         print("  patterns    Demo orchestration patterns")
+        print()
+        print("Environment variables:")
+        print("  OPENAI_API_KEY     Your OpenAI API key")
+        print("  FLASK_HOST         Web server host (default: 127.0.0.1)")
+        print("  FLASK_PORT         Web server port (default: 5000)")
+        print("  MEMORY_BACKEND     Memory backend: asmr, semantic (default: semantic)")
         print()
         return
 
     command = sys.argv[1]
 
-    if command == "pr-review":
+    if command == "web":
+        run_web_server()
+    elif command == "pr-review":
         asyncio.run(demo_pr_review())
     elif command == "research":
         asyncio.run(demo_research())

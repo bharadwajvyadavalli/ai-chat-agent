@@ -1,0 +1,91 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-chat-agent"
+version = "2.0.0"
+description = "Production-grade multi-agent orchestration framework with intelligent memory and real-world tool integration"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Bharadwaj Yadavalli"}
+]
+keywords = [
+    "ai",
+    "agents",
+    "llm",
+    "orchestration",
+    "multi-agent",
+    "gpt-4",
+    "chat",
+    "memory",
+    "tools"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "openai>=1.0.0",
+    "pyyaml>=6.0",
+    "numpy>=1.24.0",
+    "flask>=3.0.0",
+    "duckduckgo-search>=4.0.0",
+    "structlog>=24.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+vector = [
+    "chromadb>=0.4.0",
+    "pinecone-client>=2.0.0",
+]
+
+[project.scripts]
+ai-chat-agent = "main:main"
+
+[project.urls]
+Homepage = "https://github.com/bharadwajyadavalli/ai-chat-agent"
+Repository = "https://github.com/bharadwajyadavalli/ai-chat-agent"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["orchestrator*", "examples*", "tools*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true

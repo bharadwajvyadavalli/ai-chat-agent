@@ -33,8 +33,25 @@ from .patterns import (
     SequentialPattern,
     SequentialWithGatePattern,
 )
+from .resilience import (
+    CircuitBreaker,
+    CircuitBreakerConfig,
+    CircuitBreakerOpenError,
+    FallbackResult,
+    RateLimitConfig,
+    RetryConfig,
+    RetryError,
+    TimeoutConfig,
+    TimeoutError,
+    TokenBucketRateLimiter,
+    get_rate_limiter,
+    retry_with_backoff,
+    with_fallback,
+    with_retry,
+    with_timeout,
+)
 
-__version__ = "0.1.0"
+__version__ = "2.0.0"
 
 __all__ = [
     # Core
@@ -68,4 +85,20 @@ __all__ = [
     "SelfRefinePattern",
     "SequentialPattern",
     "SequentialWithGatePattern",
+    # Resilience
+    "CircuitBreaker",
+    "CircuitBreakerConfig",
+    "CircuitBreakerOpenError",
+    "FallbackResult",
+    "RateLimitConfig",
+    "RetryConfig",
+    "RetryError",
+    "TimeoutConfig",
+    "TimeoutError",
+    "TokenBucketRateLimiter",
+    "get_rate_limiter",
+    "retry_with_backoff",
+    "with_fallback",
+    "with_retry",
+    "with_timeout",
 ]
